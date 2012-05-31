@@ -10,7 +10,7 @@ module Sprockets
     # Returns file contents as its `source`.
     def source
       # File is read everytime to avoid memory bloat of large binary files
-      pathname.open('rb') { |f| f.read }
+      pathname.open('rb') { |f| f.read } unless pathname.directory?
     end
 
     # Implemented for Rack SendFile support.
